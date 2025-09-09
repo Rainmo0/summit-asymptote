@@ -1,11 +1,13 @@
-Bagaimana saya menjalankan sesuai arahan checklist tugas.
+##Bagaimana saya menjalankan sesuai arahan checklist tugas.
 
-Alur Request-Response Django: Hubungan urls.py, views.py, models.py, dan Template HTML.
+##Alur Request-Response Django: Hubungan urls.py, views.py, models.py, dan Template HTML.
 
-Peran settings.py.
+##Peran settings.py.
 
-Bagaimana migrasi database di Django?
+##Bagaimana migrasi database di Django?
 
-Kenapa Django dipilih sebagai materi untuk pemula?
+##Kenapa Django dipilih sebagai materi untuk pemula?
 
-Feedback untuk asisten dosen tutorial 1.
+##Feedback untuk asisten dosen tutorial 1.
+
+##Terima kasih sudah mengunjungi!
