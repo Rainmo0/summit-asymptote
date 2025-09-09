@@ -21,4 +21,4 @@ menawarkan bantuan. Hebat.
 
 ## Terima kasih sudah mengunjungi!
 Repisitori ini dibuat oleh Farras Syafiq Ulumuddin dari kelas PBP A.
-https://farras-syafiq-summitasymptote.pbp.cs.ui.ac.id
+Link menuju website : [https://farras-syafiq-summitasymptote.pbp.cs.ui.ac.id]
