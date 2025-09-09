@@ -3,6 +3,14 @@ Apa yang saya lakukan tidak jauh dari apa yang tutorial 1 diajarkan.
 Hanya saja ada tambahan seperti model yang sesuai dengan kriteria tugas 2 dan mendefinisikan nama, tujuan pada aplikasi web tersebut.
 
 ## Alur Request-Response Django: Hubungan urls.py, views.py, models.py, dan Template HTML.
+![bagan eak](https://krify.co/wp-content/uploads/2019/06/Django-Work-flow.jpg)
+__reference: https://krify.co/wp-content/uploads/2019/06/Django-Work-flow.jpg__  
+
+1. Mendapatkan request dari user melalui Django.
+2. Kemudian proses melalui URL dan dilanjutkan ke View.
+3. View memproses request, bila ada data dari database, View memanggil models.py. Models melakukan query ke database yang hasilnya dikembalikan ke View.
+4. Setelah proses selesai, hasilnya dirender melalui HTML.
+5. Django mengembalikan HTML menuju user sebagai response.
 
 ## Peran settings.py.
 Settings.py adalah file yang mengandung semua konfigurasi yang diatur
@@ -19,7 +27,8 @@ Django memiliki banyak fitur yang sudah tersedia, memudahkan pemula untuk belaja
 Selain itu, Django juga memiliki dokumentasi yang sangat rapih dan komprehensif sehingga
 bisa dituju bila ada fitur yang berguna atau mencari cara tahu menggunakannya. 
 Django bersifat simpel, fleksibel, konsisten, skalabilitas membuat pemula 
-lebih cepat memahami alur kerja pengembangan web tanpa harus membangun segalanya dari nol.
+lebih cepat memahami alur kerja pengembangan web tanpa harus membangun segalanya dari nol. Penggunaan
+arsitektur MVT juga ikut berperan untuk memudahkan pemula belajar.
 
 ## Feedback untuk asisten dosen tutorial 1.
 Untuk feedback saya merasa tidak ada, karena saya rasa asisten dosen sudah cukup untuk
