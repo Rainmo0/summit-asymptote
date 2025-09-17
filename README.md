@@ -1,3 +1,5 @@
+### Tugas 2
+
 ## Bagaimana saya menjalankan sesuai arahan checklist tugas.
 Apa yang saya lakukan tidak jauh dari apa yang tutorial 1 diajarkan.  
 Hanya saja ada tambahan seperti model yang sesuai dengan kriteria tugas 2 dan mendefinisikan nama, tujuan pada aplikasi web tersebut.
@@ -33,6 +35,48 @@ arsitektur MVT juga ikut berperan untuk memudahkan pemula belajar.
 ## Feedback untuk asisten dosen tutorial 1.
 Untuk feedback saya merasa tidak ada, karena saya rasa asisten dosen sudah cukup untuk
 menawarkan bantuan. Hebat.
+
+### Tugas 3
+
+## Keperluan dalam data delivery dalam mengimplementasian sebuah platform
+Data delivery adalah proses pengiriman data. Misal, dari server ke aplikasi atau dalam projek ini dari database ke pengguna. Tujuannya supaya data yang sudah ada bisa disampai dengan cepat dan aman serta konsisten. 
+
+Jadi data harus disimpan disuatu tempat yang bisa disebut sebagai 'gudang' kemudian data akan di kirim melalui data delivery ke pengguna.
+
+## XML atau JSON?
+XML ataupun JSON merupakan format data yang umum digunakan pada keperluan data delivery. XML dirancang untuk mudah dimengerti dengan pengguna hanya membacanya. JSON juga mirip seperti XML yang mudah dibaca. Pemilihan XML atau JSON tergantung dari kelebihan dan kekurangan masing-masing. 
+
+JSON mendukung tipe data sepertin strings, numbers, dan objects selain itu JSON juga dukung boolean arrays. XML tidak bisa tanpa menambahkan tag tambahan. Namun, XML lebih fleksibel dan mendukung tipe data yang kompleks seperti data binari dan timestamps.
+
+## Fungsi dari method is_valid() dalam pembuatan form
+
+Fungsi utama dari `is_valid()` adalah mengecek apakah data yang dikirim ke form sudah sesuai dengan aturan validasi yang ditentukan.
+
+Misal ada form menerima data yang kemudian memanggil method `is_valid()`. Didalamnya, data akan di tes dengan beberapa validasi seperti field yang diharuskan ada, dsb. Kemudian bila valid, maka data akan dibersihkan dan siap dipakai. Jika di projek ini, form akan disimpan setelah siap dipakai. Namun bila tidak valid, maka akan muncul error yang akan dikembalikan ke pengguna.
+
+## Pentingnya csrf_token saat membuat form
+
+CSRF token sangatlah penting karena berfungsi sebagai pelindung dari serangan Cross-Site Request Forgery.
+
+Ibarat sebuah tanda tangan rahasia yang memastikan request memang berasal dari form asli di website sendiri, bukan dari jebakan pihak luar.
+
+Jadi CSRF token bekerja yang diawali dengan menyelipkan kode unik yang acak di setiap form. Kemudian kode ini ikut terkirim saat user sumbit form. Server akan mengecek apakah token cocok dengan yang disimpan sama user. Jika tidak, request ditolak.
+
+## Feedback untuk asisten dosen tutorial 2.
+Untuk feedback kepada asisten dosen tutorial 2 sudah cukup dan melaksanakan tugasnya. Keren.
+
+## Penggunaan Postman 
+XML
+![XML](images/xml.PNG)
+
+JSON
+![JSON](images/json.PNG)
+
+XML by id
+![XML by id](images/xml1.PNG)
+
+JSON by id
+![JSON by id](images/json2.PNG)
 
 ## Terima kasih sudah mengunjungi!
 Repositori ini dibuat oleh Farras Syafiq Ulumuddin dari kelas PBP A.  

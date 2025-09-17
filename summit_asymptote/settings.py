@@ -31,7 +31,9 @@ PRODUCTION = os.getenv('PRODUCTION', 'False').lower() == 'true'
 DEBUG = True
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "farras-syafiq-summitasymptote.pbp.cs.ui.ac.id"]
-
+CSRF_TRUSTED_ORIGINS = [
+    "https://https://farras-syafiq-summitasymptote.pbp.cs.ui.ac.id"
+]
 
 # Application definition
 
@@ -60,7 +62,7 @@ ROOT_URLCONF = 'summit_asymptote.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,7 +83,7 @@ WSGI_APPLICATION = 'summit_asymptote.wsgi.application'
 if PRODUCTION:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
+            'ENGINE': 'django.db.backends.postgresql',
             'NAME': os.getenv('DB_NAME'),
             'USER': os.getenv('DB_USER'),
             'PASSWORD': os.getenv('DB_PASSWORD'),
