@@ -78,6 +78,18 @@ XML by id
 JSON by id
 ![JSON by id](images/json2.PNG)
 
+### Tugas 4
+
+## Apa itu Django `AuthenticationForm`?
+
+## Perbedaan antara autentikasi dan otorisasi
+
+## Kelebihan dan kekurangan session dan cookies
+
+## apakah cookies aman secara default?
+
+## Bagaimana saya menjalakan tugas 4 secara step-by-step
+
 ## Terima kasih sudah mengunjungi!
 Repositori ini dibuat oleh Farras Syafiq Ulumuddin dari kelas PBP A.  
 Link menuju website : [https://farras-syafiq-summitasymptote.pbp.cs.ui.ac.id].
