@@ -24,9 +24,9 @@
 <p>{{ product.description }}</p>
 
 {% if product.user %}
-    <p>Author: {{ product.user.username }}</p>
+    <p>Penjual : {{ product.user.username }}</p>
 {% else %}
-    <p>Author: Anonymous</p>
+    <p>Penjual : Anonymous</p>
 {% endif %}
 
 {% endblock content %}

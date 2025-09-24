@@ -81,14 +81,42 @@ JSON by id
 ### Tugas 4
 
 ## Apa itu Django `AuthenticationForm`?
+Django memiliki fungsi bawaan bernama AuthenticationForm yang berfungsi untuk melakukan login user. Jadi Django sudah menyediakan form untuk pengguna bisa login seperti username dan password. Bahkan Django AuthenticationForm juga sudah menyediakan validasi bila username atau password salah tidak akan masuk, namun bila username dan password benar pengguna bisa akses halaman website.
 
 ## Perbedaan antara autentikasi dan otorisasi
+Autentikasi : the process of proving that something is real, true, or what people say it is.
+Otorisasi   : official permission for something to happen, or the act of giving someone official permission to do something.
+taken from Cambridge Dictionary
 
 ## Kelebihan dan kekurangan session dan cookies
 
+### ✅ Advantages
+Session
+- Aman secara default
+- Kapasistas data yang besar
+- Proses yang transparan yang tidak bisa dilihat oleh user
+Cookies
+- Data bisa digunakan untuk memperbaiki website
+- Bisa menyesuaikan rekomendasi ke user
+
+### ❌ Disadvantages
+Session
+- Biasanya hanya sekali penggunaan
+- Performance overheda bila terdapat banyak user 
+Cookies
+- Tidak aman secara default
+- Masalah privasi
+
+
 ## apakah cookies aman secara default?
+Cookies secara default tidak aman. Karena informasi di cookies bisa dilihat dan di ubah oleh pengguna. Jika ingin menjadi aman, cookies bisa dikirim melalui HTTPS (Secure).
 
 ## Bagaimana saya menjalakan tugas 4 secara step-by-step
+1. Saya mengambil bawaan dari Django mengimplementaikan autentikasi seperti register dan login terlebih dahulu dimana pada `views.py` membuat fungsi bernama `register()` dan `login_user()`. Kemudian, kedua fungsi tersebut di routing kan URL nya pada `urls.py`. Biar terlihat rapih, saya membuat file html sendiri-sendiri untuk pengguna register ataupun login.
+2. Setelah itu saya membuat fungsi lagi yang fungsinya untuk terminate sesi pengguna sehingga balik ke laman login bernama `logout_user()`. Di bagian laman utama file html saya berikan tombol untuk pengguna bisa logout.
+3. Setelah membuat autentikasi sekarang saya membuat otorisasi seperti pengguna yang sudah login bisa melihat produk-produk yang ada di halaman website utama. Caranya dengan mengambil fungsi bawaan dari Django bernama `login_required` yang berfungsi sebagai decarator untuk fungsi-fungsi yang berlaku untuk merestriksi halaman utama dan produk detil.
+4. Kemudian saya implementasikan cookies yang bisa berfungsi untuk melihat kapan pengguna baru masuk. 
+5. Terakhir saya membuat model produk untuk menghubungkan dengan pengguna. Jadi disini pengguna-pengguna website bisa melihat produk-produk yang dijual dibuat oleh siapa. 
 
 ## Terima kasih sudah mengunjungi!
 Repositori ini dibuat oleh Farras Syafiq Ulumuddin dari kelas PBP A.  
