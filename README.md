@@ -118,6 +118,30 @@ Cookies secara default tidak aman. Karena informasi di cookies bisa dilihat dan 
 4. Kemudian saya implementasikan cookies yang bisa berfungsi untuk melihat kapan pengguna baru masuk. 
 5. Terakhir saya membuat model produk untuk menghubungkan dengan pengguna. Jadi disini pengguna-pengguna website bisa melihat produk-produk yang dijual dibuat oleh siapa. 
 
+### Tugas 5
+
+## Urutan prioritas CSS selector
+1. Inline style
+2. External dan internal style sheets
+3. Browser default
+
+## Pentingnya responsive design dalam pengembangan aplikasi web
+Penggunaan aplikasi web tidak hanya nyangkut di monitor saja tetapi adapun device lain seperti hp bisa membukanya. Namun perbedaan penampilan yang disebabkan hardware device masing-masing membuat aplikasi web harus fleksibel dalam menampilkan websitenya. 
+Jadi responsivve web design bertujuan untuk menghasilkan tampilan web yang sesuai dan terlihat baik untuk seluruh perangkat.
+
+## Margin, border, dan padding
+Pada box model di CSS terdapat setiap elemen HTML
+yang terdiri dari,
+1. Content, tempat dimana teks dan gambar
+2. Padding, memberi jarak kosong antar content dan border, padding juga bersifat transparan
+3. Border, membungkus yang didalamnya padding dan content
+4. Margin, bersihkan area diluar border, bersifat transparan
+
+## Flex box dan grid layout
+Flexbox dan Grid Layout adalah module dimana Flexbox digunakan untuk satu dimensi layout sedangkan grid layout digunakan untuk dua dimensi layout.
+
+## Penugasan step-by-step
+
 ## Terima kasih sudah mengunjungi!
 Repositori ini dibuat oleh Farras Syafiq Ulumuddin dari kelas PBP A.  
 Link menuju website : [https://farras-syafiq-summitasymptote.pbp.cs.ui.ac.id].
