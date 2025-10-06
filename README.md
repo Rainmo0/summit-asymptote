@@ -148,6 +148,6 @@ Flexbox dan Grid Layout adalah module dimana Flexbox digunakan untuk satu dimens
 4. Membuat `card_product.html` sehingga tampilan product terlihat lebih elegan
 5. Sesuaikan `main.html` dengan adanya `card_product.html`
 
-## Terima yang lainkasih sudah mengunjungi!
+## Terima kasih sudah mengunjungi! ₊✩‧₊˚౨ৎ˚₊✩‧₊
 Repositori ini dibuat oleh Farras Syafiq Ulumuddin dari kelas PBP A.  
 Link menuju website : [https://farras-syafiq-summitasymptote.pbp.cs.ui.ac.id].
