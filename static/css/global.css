@@ -1,0 +1,76 @@
+
+.form-style form input:not([class*="border-"]),
+.form-style form select:not([class*="border-"]),
+.form-style form textarea:not([class*="border-"]) {
+  width: 100%;
+  padding: 0.5rem;
+  border: 2px solid #bcbcbc;
+  border-radius: 0.375rem;
+  background: linear-gradient(to top, #f7f7f7, #ffffff);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease-in-out;
+}
+
+.form-style form input:focus:not([class*="focus:"]),
+.form-style form select:focus:not([class*="focus:"]),
+.form-style form textarea:focus:not([class*="focus:"]) {
+  outline: none;
+  border-color: #16a34a;
+  box-shadow: 0 0 6px 2px rgba(22, 163, 74, 0.3);
+  background: linear-gradient(to top, #f8fff9, #ffffff);
+}
+
+.form-style input[type="checkbox"] {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid #d1d5db;
+  border-radius: 0.375rem;
+  background-color: white;
+  cursor: pointer;
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  transition: all 0.15s ease-in-out;
+}
+
+.form-style input[type="checkbox"]:checked {
+  background-color: #16a34a;
+  border-color: #16a34a;
+  box-shadow: 0 0 4px rgba(22, 163, 74, 0.4);
+}
+
+.form-style input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  font-size: 0.875rem;
+}
+
+.form-style input[type="checkbox"]:focus {
+  outline: none;
+  border-color: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15);
+}
+
+.form-style.debug input,
+.form-style.debug select,
+.form-style.debug textarea {
+  outline: 1px dashed rgba(255, 0, 0, 0.4);
+}
+
+@keyframes shine {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-\[shine_3s_ease-in-out_infinite\] {
+  background-size: 200% auto;
+}
+
+

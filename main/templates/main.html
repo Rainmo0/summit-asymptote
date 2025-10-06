@@ -1,94 +1,107 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Summit Asymptote</title>
+{% endblock meta %}
+
 {% block content %}
+{% include 'navbar.html' %}
 
-<nav>
-  <h1>Welcome to Summit Asymptote!</h1>
+<div class="bg-gradient-to-b from-sky-200 to-sky-500 min-h-screen pt-20 pb-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-  <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="{% url 'main:create_product' %}">Create Product</a></li>
-  </ul>
-
-  {% if user.is_authenticated %}
-    <div>
-      <span>Welcome, {{ name|default:user.username }}</span>
-      <span>{{ npm|default:"Student" }} - {{ class|default:"Class" }}</span>
-      <a href="{% url 'main:logout' %}">Logout</a>
+    <!-- Header -->
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8">
+      <div class="space-x-3 mb-4 sm:mb-0">
+         <h1 class="text-3xl font-bold mb-2 
+              bg-gradient-to-r from-green-500 via-emerald-400 to-sky-500 
+              bg-clip-text text-transparent drop-shadow-[0_2px_4px_rgba(0,0,0,0.25)]
+              animate-[shine_3s_ease-in-out_infinite]">
+            Some Product ⚽︎
+          </h1>
+      </div>
     </div>
-  {% else %}
-    <div>
-      <a href="{% url 'main:login' %}">Login</a>
-      <a href="{% url 'main:register' %}">Register</a>
+
+    <!-- Filter Buttons -->
+    <div class="flex flex-wrap gap-3 mb-8">
+      <a href="?filter=all"
+         class="{% if request.GET.filter == 'all' or not request.GET.filter %}bg-sky-600 text-white{% else %}bg-white text-gray-700 border border-gray-300{% endif %} px-4 py-2 rounded-md font-medium hover:bg-sky-600 hover:text-white transition">
+         All Products
+      </a>
+      <a href="?filter=my"
+         class="{% if request.GET.filter == 'my' %}bg-sky-600 text-white{% else %}bg-white text-gray-700 border border-gray-300{% endif %} px-4 py-2 rounded-md font-medium hover:bg-sky-600 hover:text-white transition">
+         My Products
+      </a>
+
+      {% if user.is_authenticated %}
+        <div class="sm:ml-auto text-sm text-gray-600 sm:text-right w-full sm:w-auto">
+          <span class="block sm:inline opacity-90">🕓 Last login:</span>
+          <span class="font-medium text-sky-800">{{ last_login }}</span>
+        </div>
+      {% endif %}
     </div>
-  {% endif %}
-</nav>
 
-<a href="{% url 'main:create_product' %}">
-  <button>+ Add Product</button>
-</a>
+    <!-- Product Grid -->
+    {% if not product_list %}
+    <div class="bg-white/90 rounded-xl border border-gray-300 p-12 text-center shadow">
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">No products yet</h3>
+      <p class="text-gray-500 mb-6">Add your first product to Summit Asymptote!</p>
+      <a href="{% url 'main:create_product' %}" class="inline-flex items-center px-4 py-2 bg-sky-600 text-white rounded-md hover:bg-sky-700 transition">
+        Add Product
+      </a>
+    </div>
+    {% else %}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {% for product in product_list %}
+      <article class="bg-white/95 border border-gray-300 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden">
+        <!-- Thumbnail -->
+        <div class="aspect-[16/9] bg-gray-100 relative overflow-hidden">
+          {% if product.thumbnail %}
+            <img src="{{ product.thumbnail }}" alt="{{ product.name }}" class="w-full h-full object-cover">
+          {% else %}
+            <div class="w-full h-full bg-gradient-to-b from-gray-100 to-gray-200"></div>
+          {% endif %}
+          {% if product.is_featured %}
+            <span class="absolute top-3 left-3 bg-yellow-400 text-yellow-900 text-xs font-semibold px-2 py-1 rounded shadow-sm">
+              Featured
+            </span>
+          {% endif %}
+        </div>
 
-<a href="{% url 'main:logout' %}">
-  <button>Logout</button>
-</a>
+        <!-- Content -->
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2">
+            <a href="{% url 'main:show_product' product.id %}" class="hover:text-sky-700 transition">
+              {{ product.name }}
+            </a>
+          </h3>
 
-<h5>Sesi terakhir login: {{ last_login }}</h5>
+          <p class="text-gray-600 text-sm mb-3 line-clamp-3">
+            {{ product.description|truncatewords:20 }}
+          </p>
 
-<a href="?filter=all">
-    <button type="button">All Products</button>
-</a>
-<a href="?filter=my">
-    <button type="button">My Products</button>
-</a> 
+          <div class="flex items-center justify-between text-sm text-gray-700 mb-4">
+            <span class="font-semibold text-sky-700">{{ product.get_category_display }}</span>
+            <span class="font-bold">${{ product.price }}</span>
+          </div>
 
-<hr>
-
-{% if not product_list %}
-<p>Belum ada data product pada summit asymptote.</p>
-{% else %}
-
-{% for product in product_list %}
-<div>
-  <h2><a href="{% url 'main:show_product' product.id %}">{{ product.name }}</a></h2>
-
-  <p>
-    <b>{{ product.get_category_display }}</b> |
-    <b>{{ product.price }}$</b> |
-    <b>Stock: {{ product.stock }} </b> 
-    
-    {% if product.is_featured %} | 
-    <b>Featured</b>{% endif %} | <i>{{ product.created_at|date:"d M Y H:i" }}</i>
-  </p>
-
-  {% if product.thumbnail %}
-  <img src="{{ product.thumbnail }}" alt="thumbnail" width="150" height="100">
-  <br />
-  {% endif %}
-
-  <p>{{ product.description|truncatewords:25 }}...</p>
-
-  <p>
-    <a href="{% url 'main:show_product' product.id %}"><button>Read More</button></a>
-
-    {% if user.is_authenticated and product.user == user %}
-    <a href="{% url 'main:edit_product' product.pk %}">
-        <button>
-            Edit
-        </button>
-    </a>
-    <a href="{% url 'main:delete_product' product.pk %}">
-      <button>
-          Delete
-      </button>
-    </a>
+          <div class="flex items-center justify-between border-t border-gray-200 pt-3">
+            <a href="{% url 'main:show_product' product.id %}" class="text-sky-600 hover:text-sky-700 font-medium text-sm">
+              Read More →
+            </a>
+            {% if user.is_authenticated and product.user == user %}
+            <div class="flex space-x-2 text-sm">
+              <a href="{% url 'main:edit_product' product.pk %}" class="text-gray-600 hover:text-gray-700 font-medium">Edit</a>
+              <a href="{% url 'main:delete_product' product.pk %}" class="text-red-600 hover:text-red-700 font-medium">Delete</a>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
     {% endif %}
-  </p>
+  </div>
 </div>
-
-<hr>
-{% endfor %}
-
-{% endif %}
-
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLCTe4skxn9u9jk6edqF7kRb1vhO1c8UGDmg&s" alt="catterpilar smoke">
-
 {% endblock content %}

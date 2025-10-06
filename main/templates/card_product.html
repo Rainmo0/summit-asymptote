@@ -1,0 +1,68 @@
+{% load static %}
+<article class="bg-gradient-to-b from-white to-gray-100 rounded-lg border border-gray-300 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden form-style">
+  <!-- Thumbnail -->
+  <div class="relative overflow-hidden" style="aspect-ratio:16/9;">
+    {% if product.thumbnail %}
+      <img src="{{ product.thumbnail }}" alt="{{ product.title }}" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700 ease-out">
+    {% else %}
+      <div class="w-full h-full bg-gray-300 flex items-center justify-center text-gray-500 text-sm italic">No image</div>
+    {% endif %}
+
+    <!-- Category Badge -->
+    <div class="absolute top-3 left-3">
+      <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wide bg-green-700 text-white rounded-sm shadow-md">
+        {{ product.get_category_display }}
+      </span>
+    </div>
+
+    <!-- Status Badges -->
+    <div class="absolute top-3 right-3 flex space-x-2">
+      {% if product.is_featured %}
+        <span class="inline-block px-2 py-1 text-xs font-semibold text-yellow-900 bg-yellow-300 rounded shadow-inner">
+          ★ Featured
+        </span>
+      {% endif %}
+      {% if product.is_hot %}
+        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-gradient-to-r from-red-600 to-orange-500 rounded shadow-md">
+          🔥 Hot
+        </span>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="p-5">
+    <div class="flex items-center text-xs text-gray-600 mb-2 italic">
+      <time datetime="{{ product.created_at|date:'c' }}">{{ product.created_at|date:"M j, Y" }}</time>
+    </div>
+
+    <h3 class="text-xl font-bold text-gray-900 mb-2 tracking-tight drop-shadow-sm">
+      <a href="{% url 'main:show_product' product.id %}" class="hover:text-green-700 transition-colors duration-150">
+        {{ product.title }}
+      </a>
+    </h3>
+
+    <p class="text-gray-700 text-sm leading-relaxed mb-4">
+      {{ product.description|truncatewords:20 }}
+    </p>
+
+    <!-- Action Buttons -->
+    {% if user.is_authenticated and product.user == user %}
+      <div class="flex items-center justify-between pt-3 border-t border-gray-300">
+        <a href="{% url 'main:show_product' product.id %}" class="text-green-700 hover:text-green-800 font-semibold text-sm transition-colors">
+          ➤ View Details
+        </a>
+        <div class="flex space-x-3 text-sm">
+          <a href="{% url 'main:edit_product' product.id %}" class="text-blue-700 hover:underline">✎ Edit</a>
+          <a href="{% url 'main:delete_product' product.id %}" class="text-red-700 hover:underline">✖ Delete</a>
+        </div>
+      </div>
+    {% else %}
+      <div class="pt-3 border-t border-gray-300">
+        <a href="{% url 'main:show_product' product.id %}" class="text-green-700 font-semibold text-sm hover:text-green-800 transition-colors">
+          ➤ View Details
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</article>

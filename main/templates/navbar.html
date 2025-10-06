@@ -1,0 +1,107 @@
+<nav class="fixed top-0 left-0 w-full bg-gradient-to-b from-sky-400 to-sky-600 shadow-[0_4px_10px_rgba(0,0,0,0.3)] border-b border-sky-700/30 backdrop-blur-sm z-50">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      
+      <!-- Logo / Brand -->
+      <div class="flex items-center space-x-2">
+        <h1 class="text-2xl font-bold text-white [text-shadow:_0_1px_3px_rgba(0,0,0,0.6)] tracking-tight">
+          Summit Asymptote
+        </h1>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8 text-white font-medium">
+        <a href="/" class="px-3 py-1.5 rounded-md bg-white/10 hover:bg-white/20 transition-all duration-200 border border-white/20 shadow-inner [text-shadow:_0_1px_2px_rgba(0,0,0,0.4)]">
+          Home
+        </a>
+        <a href="{% url 'main:create_product' %}" class="px-3 py-1.5 rounded-md bg-white/10 hover:bg-white/20 transition-all duration-200 border border-white/20 shadow-inner [text-shadow:_0_1px_2px_rgba(0,0,0,0.4)]">
+          Create Product
+        </a>
+      </div>
+
+      <!-- Desktop User Section -->
+      <div class="hidden md:flex items-center space-x-4 text-white font-medium">
+        {% if user.is_authenticated %}
+          <div class="text-right leading-tight">
+            <span class="block [text-shadow:_0_1px_2px_rgba(0,0,0,0.5)]">Welcome, {{ name|default:user.username }}</span>
+            <span class="block text-sm text-white/90 [text-shadow:_0_1px_2px_rgba(0,0,0,0.4)]">
+              {{ npm|default:"Student" }} – {{ class|default:"Class" }}
+            </span>
+          </div>
+          <a href="{% url 'main:logout' %}"
+             class="ml-3 px-4 py-1.5 rounded-md bg-gradient-to-b from-white/80 to-white/60 text-sky-800 font-semibold border border-white/50 shadow hover:brightness-110 active:scale-95 transition-all duration-200">
+            Logout
+          </a>
+        {% else %}
+          <a href="{% url 'main:login' %}"
+             class="px-4 py-1.5 rounded-md bg-gradient-to-b from-white/80 to-white/60 text-sky-800 font-semibold border border-white/50 shadow hover:brightness-110 active:scale-95 transition-all duration-200">
+            Login
+          </a>
+          <a href="{% url 'main:register' %}"
+             class="px-4 py-1.5 rounded-md bg-gradient-to-b from-sky-100 to-sky-300 text-sky-900 font-semibold border border-white/50 shadow hover:brightness-110 active:scale-95 transition-all duration-200">
+            Register
+          </a>
+        {% endif %}
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden flex items-center">
+        <button class="mobile-menu-button p-2 text-white hover:text-white/80 transition-colors">
+          <span class="sr-only">Open menu</span>
+          <div class="w-6 h-6 flex flex-col justify-center items-center">
+            <span class="bg-current block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm"></span>
+            <span class="bg-current block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5"></span>
+            <span class="bg-current block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm"></span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu hidden md:hidden bg-gradient-to-b from-sky-100 to-sky-200 border-t border-sky-300/40 shadow-inner">
+    <div class="px-6 py-4 space-y-4">
+
+      <!-- Mobile Navigation -->
+      <div class="space-y-1">
+        <a href="/" class="block text-sky-800 hover:text-sky-900 font-medium py-2 transition-colors">
+          Home
+        </a>
+        <a href="{% url 'main:create_product' %}" class="block text-sky-800 hover:text-sky-900 font-medium py-2 transition-colors">
+          Create Product
+        </a>
+      </div>
+
+      <!-- Mobile User Section -->
+      <div class="border-t border-sky-300/40 pt-4">
+        {% if user.is_authenticated %}
+          <div class="mb-3">
+            <div class="font-semibold text-sky-900">{{ name|default:user.username }}</div>
+            <div class="text-sm text-sky-800/80">{{ npm|default:"Student" }} – {{ class|default:"Class" }}</div>
+          </div>
+          <a href="{% url 'main:logout' %}" class="block text-red-600 hover:text-red-700 font-medium py-2 transition-colors">
+            Logout
+          </a>
+        {% else %}
+          <div class="space-y-3">
+            <a href="{% url 'main:login' %}" class="block text-sky-800 hover:text-sky-900 font-medium py-2 transition-colors">
+              Login
+            </a>
+            <a href="{% url 'main:register' %}" class="block bg-gradient-to-b from-white/90 to-sky-200 text-sky-900 font-semibold py-2 px-4 rounded text-center shadow hover:brightness-110 transition-colors">
+              Register
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const btn = document.querySelector("button.mobile-menu-button");
+    const menu = document.querySelector(".mobile-menu");
+
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+    });
+  </script>
+</nav>

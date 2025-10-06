@@ -141,7 +141,13 @@ yang terdiri dari,
 Flexbox dan Grid Layout adalah module dimana Flexbox digunakan untuk satu dimensi layout sedangkan grid layout digunakan untuk dua dimensi layout.
 
 ## Penugasan step-by-step
+1. Membuat fungsi `delete_product` dan `edit_product`
+2. Mempersiapkan konsep static untuk menaruh `global.css`
+2. Mengubah visual halaman website dengan menggunakan CSS dan Tailwind
+3. Membuat navbar.html dan sesuaikan visualnya dengan yang lain
+4. Membuat `card_product.html` sehingga tampilan product terlihat lebih elegan
+5. Sesuaikan `main.html` dengan adanya `card_product.html`
 
-## Terima kasih sudah mengunjungi!
+## Terima yang lainkasih sudah mengunjungi!
 Repositori ini dibuat oleh Farras Syafiq Ulumuddin dari kelas PBP A.  
 Link menuju website : [https://farras-syafiq-summitasymptote.pbp.cs.ui.ac.id].
