@@ -15,10 +15,10 @@
       <p class="text-gray-600 text-sm italic">Find your spot in Summit Asymptote 💻</p>
     </div>
 
-    <form method="POST" action="" class="space-y-5">
+    <!-- AJAX-based login form -->
+    <form id="loginForm" method="POST" class="space-y-5">
       {% csrf_token %}
 
-      <!-- Replace Django auto form to apply .form-style properly -->
       <div class="space-y-4">
         {{ form.as_p }}
       </div>
@@ -34,20 +34,52 @@
       />
     </form>
 
-    <!-- Messages Display -->
-    {% if messages %}
-      <ul class="mt-4 text-sm text-red-700 bg-green-100 border border-green-300 rounded-md p-2 shadow-inner">
-          {% for message in messages %}
-          <li>{{ message }}</li>
-          {% endfor %}
-      </ul>
-    {% endif %}
-
-
     <div class="text-center mt-6 text-gray-700 text-sm">
       Don't have an account yet? 
       <a href="{% url 'main:register' %}" class="text-sky-700 font-semibold hover:underline">Register Now</a>
     </div>
   </div>
 </div>
+
+<!-- Optional manual test button -->
+<!-- 
+<button
+  onclick="showToast('Sample Title', 'This is a sample message for the toast notification.')"
+  class="hidden"
+>
+  Click to Show Toast
+</button>
+-->
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const formData = new FormData(this);
+
+  try {
+    const response = await fetch("{% url 'main:login' %}", {
+      method: "POST",
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
+      },
+      body: formData,
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      showToast("Login Successful 🎉", "Welcome back, explorer!");
+      setTimeout(() => window.location.href = result.redirect_url, 1000);
+    } else {
+      const errorText = typeof result.error === "object"
+        ? Object.values(result.error).flat().join(", ")
+        : result.error || "Invalid credentials.";
+      showToast("Login Failed ⚠️", errorText);
+    }
+  } catch (err) {
+    showToast("Error", "Unable to connect to server.");
+  }
+});
+</script>
 {% endblock content %}
